@@ -11,7 +11,7 @@ log_lines = list(map(lambda s: s.strip(), log_lines))
 while ("" in log_lines):
       log_lines.remove("")
 
-print("Log line files")
+print("Log lines from log file:")
 print(log_lines)
 
 #Setting Preivous values as None
@@ -33,7 +33,7 @@ def set_value(sip, sport, dip, dport) :
 
 for l in log_lines :        
        l = l.split(" >> ")        
-       print(l)
+       #print(l)
        if previous_destip == "" and  previous_sourceip =="" :
             temp_sourceip = l[0].split(":")
             temp_destip = l[1].split(":")            
@@ -43,7 +43,7 @@ for l in log_lines :
                 temp_destip = l[1].split(":")
                 if dest_port not in temp_destip[1] and dest_port not in source_port:                    
                     print("There is a suspicious activity from " + previous_sourceip + " IP address")
-                    print("This source IP " +previous_sourceip + ":" +source_port+ "  is trying " + dest_port + " and  " +temp_destip[1]+ "  ports" )
+                    print("This source IP " +previous_sourceip + ":" +source_port+ " is trying to access " + dest_port + " and " +temp_destip[1]+ " ports" )
        temp_sourceip = l[0].split(":")
        temp_destip = l[1].split(":")       
        set_value(temp_sourceip[0], temp_sourceip[1],temp_destip[0],temp_destip[1])
